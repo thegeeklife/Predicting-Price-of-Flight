@@ -1,0 +1,141 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Predict Flight Price</title>
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <!-- css -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+
+</head> 
+<body>
+
+   <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Predict Price of Flights (Data from India)</a>
+            </div>
+        </div>
+    </nav>   
+
+
+<ul class="slideshow">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<div id="container">
+   
+    <div class="row">
+        
+            <h1 ><span><i class="fas fa-plane"></i></span> Enter Flight Details</h1>
+            <!-- <div style="width:30%; margin: 25px auto;"> -->
+                <hr>
+                <form action="/predict" method="POST">
+                    <div class="form-group">
+                       <h5>Select Departure Date</h5>
+                       <input type="datetime-local" name="Dep_Time" id="Dep_Time" required="required">
+                    </div>
+                    <div class="form-group">
+                        <h5 class="card-title">Arrival Date</h5>
+                        <input type="datetime-local" name="Arrival_Time" id="Arrival_Time" required="required">
+                    </div>
+                    <div class="form-group">
+                        <h5 >Source</h5>
+                        <select name="Source" id="Source" required="required">
+                            <option value="Delhi">Delhi</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Chennai">Chennai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <h5 >Destination</h5>
+                        <select name="Destination" id="Destination" required="required">
+                            <option value="Cochin">Cochin</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Kolkata">Kolkata</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <h5>No. of Stops</h5>
+                        <select name="stops" required="required">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <h5>Select Your Airline</h5>
+                        <select name="airline" id="airline" required="required">
+                            <option value="Jet Airways">Jet Airways</option>
+                            <option value="IndiGo">IndiGo</option>
+                            <option value="Air India">Air India</option>
+                            <option value="Multiple carriers">Multiple carriers</option>
+                            <option value="SpiceJet">SpiceJet</option>
+                            <option value="Vistara">Vistara</option>
+                            <option value="Air Asia">Air Asia</option>
+                            <option value="GoAir">GoAir</option>
+                            <option value="Multiple carriers Premium economy">Multiple carriers Premium economy
+                            </option>
+                            <option value="Jet Airways Business">Jet Airways Business</option>
+                            <option value="Vistara Premium economy">Vistara Premium economy</option>
+                            <option value="Trujet">Trujet</option>
+                        </select>
+                    </div>    
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary" value="Submit" >Submit</button>
+                    </div>
+                </form>
+           
+        <!-- </div> -->
+    </div>
+
+    <div class="row result">
+        <br>
+        <br>
+        <h3> The predicted price for this flight is:</h3> 
+        <h3>{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+        <p>Subia Ansari: <a href="https://github.com/thegeeklife">Github - @thegeeklife</a></p>
+    </div>
+    
+</div>
+    
+ 
+
+ <!--    </div>
+ 
+
+</div> -->
+
+   
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
